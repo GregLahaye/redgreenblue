@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  </head>
+  <body class="bg-dark">
+    <div class="content">
+      <div class="color">
+        <div class="inner" style="visibility: hidden;">
+          <p>R: </p>
+          <p>G: </p>
+          <p>B: </p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">R</span>
+          </div>
+          <input name="red" type="number" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">G</span>
+          </div>
+          <input name="green" type="number" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">B</span>
+          </div>
+          <input name="blue" type="number" class="form-control">
+        </div>
+
+        <button type="button" name="check" class="btn btn-primary">Check</button>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        const u = Math.floor(Math.random() * 256);
+
+        $('.color').css('background', `rgb(${r}, ${g}, ${b})`);
+
+        const n = Math.floor(Math.random() * 2);
+        switch (n) {
+          case 0:
+            $('input[name="red"]').val(u);
+            $('input[name="green"]').val(g);
+            $('input[name="blue"]').val(b);
+            break;
+          case 1:
+            $('input[name="red"]').val(r);
+            $('input[name="green"]').val(u);
+            $('input[name="blue"]').val(b);
+            break;
+          case 2:
+            $('input[name="red"]').val(r);
+            $('input[name="green"]').val(g);
+            $('input[name="blue"]').val(u);
+            break;
+        }
+
+        $('button[name="check"]').click(function() {
+          $('.inner').empty();
+          $('.inner').append($('<p>R: ' + r + '</p>'));
+          $('.inner').append($('<p>G: ' + g + '</p>'));
+          $('.inner').append($('<p>B: ' + b + '</p>'));
+          $('.inner').css('visibility', 'visible');
+        });
+      });
+    </script>
+  </body>
+</html>
